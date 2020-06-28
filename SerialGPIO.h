@@ -4,15 +4,20 @@
 #define TX  0
 #define RX  1
 
-typedef byte unsigned char;
+#define EIO 5
+
+typedef unsigned char byte;
 
 /**
   * SerialGPIO:
   * Arduino helper class for using free GPIO pins as UART.
+  *
+  * Limitations cannot read and write at the same time.
   */
 class SerialGPIO {
     unsigned int    baudrate;
     byte            pins[2];
+    byte            timer;
 
 public:
     /*
